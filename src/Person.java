@@ -8,7 +8,7 @@ Private method of_age? that returns true if age is greater or equal to 18 and fa
 Public method can_use_services? that returns true if person is of age or if they have permission from parents.
 
  */
-public class Person {
+public class Person implements Nameable{
      int id;
      String name;
      int age;
@@ -59,5 +59,9 @@ public class Person {
     }
 
 
+    @Override
+    public String correctName() {
+        return name;
+    }
 }
 
