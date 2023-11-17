@@ -6,6 +6,6 @@ public class CapitalizedDecorator extends Decorator{
     }
     public String correctName() {
         String name = nameable.correctName();
-        return name.toUpperCase();//capitalized the name
+        return name.toUpperCase();  //capitalized the name
     }
 }

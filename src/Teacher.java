@@ -15,7 +15,7 @@ public class Teacher extends Person {
 
     @Override
     public boolean canUseServices() {
-        return true;
+         return true;
     }
 
     public String getSpecialization() {

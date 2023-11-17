@@ -1,24 +1,20 @@
-/*
-create class Person with the following:
-Instance vars: id, name, and age.
-Constructor with name, age, and parent_permission as parameter. name and parent_permission are optional and have default values of "Unknown" and true.
-Getters for id, name, and age.
-Setters for name and age.
-Private method of_age? that returns true if age is greater or equal to 18 and false otherwise.
-Public method can_use_services? that returns true if person is of age or if they have permission from parents.
+import java.util.ArrayList;
+import java.util.List;
 
- */
+
 public class Person implements Nameable{
      int id;
      String name;
      int age;
      boolean parentPermission;
+    private List<Rental> rentals;
 
     public Person(String name, int age) {
 
         this.name = name != null ? name : "Unknown";
         this.age = age;
         this.parentPermission = true;
+        this.rentals = new ArrayList<>();
     }
 
     public Person(String name, int age, boolean parentPermission) {
@@ -62,6 +58,14 @@ public class Person implements Nameable{
     @Override
     public String correctName() {
         return name;
+    }
+    public List<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void addRental(Rental rental) {
+        rentals.add(rental);
+
     }
 }
 
