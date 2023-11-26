@@ -11,6 +11,12 @@ public class Student extends Person {
          this.classroom = classroom;
     }
 
+    public void setClassroom(Classroom classroom) {
+        this.classroom = this.classroom;
+        classroom.addStudent(this);
+
+    }
+
     public String getClassroom() {
 
         return classroom;

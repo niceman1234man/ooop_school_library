@@ -8,6 +8,6 @@ public class Decorator implements Nameable{
 
     @Override
     public String correctName() {
-        return nameable.correctName();
+         return nameable.correctName();
     }
 }
