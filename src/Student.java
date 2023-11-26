@@ -6,8 +6,8 @@ Constructor extends parent's constructor by adding classroom and a parameter for
 public class Student extends Person {
     String classroom;
 
-    public Student(String name, int age, String classroom) {
-        super(name, age);
+    public Student(int id,String name, int age, String classroom) {
+        super(id,name, age);
          this.classroom = classroom;
     }
 

@@ -9,16 +9,16 @@ public class Person implements Nameable{
      boolean parentPermission;
     private List<Rental> rentals;
 
-    public Person(String name, int age) {
-
+    public Person(int id,String name, int age) {
+        this.id=id;
         this.name = name != null ? name : "Unknown";
         this.age = age;
         this.parentPermission = true;
         this.rentals = new ArrayList<>();
     }
 
-    public Person(String name, int age, boolean parentPermission) {
-       this(name, age);
+    public Person(int id,String name, int age, boolean parentPermission) {
+       this(id,name, age);
         this.parentPermission = parentPermission;
     }
 
