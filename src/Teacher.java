@@ -8,8 +8,8 @@ Each class should be saved in a separate file.
 public class Teacher extends Person {
      private String specialization;
 
-    public Teacher(String name, int age, String specialization) {
-        super(name, age);
+    public Teacher(int id,String name, int age, String specialization) {
+        super(id,name, age);
          this.specialization = specialization;
     }
 
