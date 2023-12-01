@@ -14,7 +14,7 @@ public class App {
     public static void listAllBooks() {
         out.println("Listing all books:");
         for (Book book : books) {
-            out.println("[Book  title]:"+book.getTitle());
+            out.println("[Book  TITLE]:"+book.getTitle());
             out.println("[Book AUTHOR]:"+book.getAuthor());
         }
     }
@@ -51,14 +51,14 @@ public class App {
 
             Student student = new Student(personId, name, age, classroom);
             people.add(student);
-            out.println("Student created succcesfully !");
+            out.println("Student created successfully !");
         } else if (personType.equalsIgnoreCase("teacher")) {
             out.println("Enter the teacher's specialization:");
             String specialization = scanner.nextLine();
 
             Teacher teacher = new Teacher(personId, name, age, specialization);
             people.add(teacher);
-            out.println("Teacher created succesfully");
+            out.println("Teacher created successfully !");
         } else {
             out.println("Invalid person type.");
         }
@@ -73,7 +73,7 @@ public class App {
 
         Book book = new Book(title, author);
         books.add(book);
-        out.println("Book created succesfully !");
+        out.println("Book created successfully !");
     }
 
     public static void createRental() {
@@ -93,7 +93,7 @@ public class App {
 
         Book book = findBookByTitle(bookTitle);
         if (book == null) {
-            out.println("Book not found.");
+            out.println("Book not found !.");
             return;
         }
 
@@ -103,7 +103,7 @@ public class App {
         Rental rental = new Rental(rentalDate, book, person);
         rentals.add(rental);
         person.addRental(rental);
-        out.println("Rental created succesfully !");
+        out.println("Rental created successfully !");
     }
 
     public static void listRentalsForPerson() {

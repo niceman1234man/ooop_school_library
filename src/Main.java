@@ -9,7 +9,7 @@ public class Main {
         boolean quit = false;
 
         while (!quit) {
-            out.println("Please choose an option:");
+            out.println("Please choose your option:");
             out.println("1. List all books");
             out.println("2. List all people");
             out.println("3. Create a person");
@@ -19,7 +19,7 @@ public class Main {
             out.println("0. Quit");
 
             int option = scanner.nextInt();
-            scanner.nextLine(); // Consume thenewline character
+            scanner.nextLine(); // Consume the newline character
 
             switch (option) {
                 case 1:
@@ -45,7 +45,7 @@ public class Main {
                     quit = true;
                     break;
                 default:
-                    out.println("Invalid option. Please try again.");
+                    out.println("you choose Invalid option. Please try again.");
             }
         }
     }

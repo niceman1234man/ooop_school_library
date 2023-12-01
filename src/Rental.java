@@ -14,6 +14,7 @@ public class Rental {
     }
 
     public void setDate(String date) {
+
         this.date = date;
     }
 
