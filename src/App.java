@@ -22,7 +22,8 @@ public class App {
     public static void listAllPeople() {
         out.println("Listing all people:");
         for (Person person : people) {
-            out.println(" [Name ]:"+person.getName());
+            Nameable decoratedPerson = new TrimmerDecorator(new CapitalizedDecorator(person));
+            out.println(" [Name ]:"+decoratedPerson .correctName());
             out.println(" [Age  ] :"+person.getAge());
         }
     }
@@ -62,6 +63,7 @@ public class App {
         } else {
             out.println("Invalid person type.");
         }
+
     }
 
     public static void createBook() {
@@ -116,8 +118,8 @@ public class App {
             out.println("Person not found.");
             return;
         }
-
-        out.println("Listing rentals for person: " + person.getName());
+        Nameable decoratedPerson = new TrimmerDecorator(new CapitalizedDecorator(person));
+        out.println("Listing rentals for person: " +decoratedPerson.correctName());
         for (Rental rental : person.getRentals()) {
             out.println("Date : "+rental.getDate()+",Book "+rental.getBook().getTitle()+" by "+rental.getBook().getAuthor());
         }
