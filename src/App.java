@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.System.out;
+
 public class App {
     private static List<Book> books = new ArrayList<>();
     private static List<Person> people = new ArrayList<>();
@@ -10,114 +12,116 @@ public class App {
     private static int nextPersonId = 1;
 
     public static void listAllBooks() {
-        System.out.println("Listing all books:");
+        out.println("Listing all books:");
         for (Book book : books) {
-            System.out.println("[Book  title]:"+book.getTitle());
-            System.out.println("[Book AUTHOR]:"+book.getAuthor());
+            out.println("[Book  TITLE]:"+book.getTitle());
+            out.println("[Book AUTHOR]:"+book.getAuthor());
         }
     }
 
     public static void listAllPeople() {
-        System.out.println("Listing all people:");
+        out.println("Listing all people:");
         for (Person person : people) {
-            System.out.println(" [Name ]:"+person.getName());
-            System.out.println(" [Age  ] :"+person.getAge());
+            Nameable decoratedPerson = new TrimmerDecorator(new CapitalizedDecorator(person));
+            out.println(" [Name ]:"+decoratedPerson .correctName());
+            out.println(" [Age  ] :"+person.getAge());
         }
     }
 
     public static void createPerson() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the person's name:");
+        out.println("Enter the person's name:");
         String name = scanner.nextLine();
-        System.out.println("Enter the person's age:");
+        out.println("Enter the person's age:");
         int age = scanner.nextInt();
         scanner.nextLine(); // Consume the newline character
-        System.out.println("Enter the person's ID");
+        out.println("Enter the person's ID");
         int id = scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Has any parent permission? true/false");
+        out.println("Has any parent permission? true/false");
         boolean parentPermission= scanner.nextBoolean();
         scanner.nextLine();
-        System.out.println("Is the person a student or a teacher? (student/teacher):");
+        out.println("Is the person a student or a teacher? (student/teacher):");
         String personType = scanner.nextLine();
 
         int personId = nextPersonId++; // Assign the next available person ID
 
         if (personType.equalsIgnoreCase("student")) {
-            System.out.println("Enter the student's classroom:");
+            out.println("Enter the student's classroom:");
             String classroom = scanner.nextLine();
 
             Student student = new Student(personId, name, age, classroom);
             people.add(student);
-            System.out.println("Student created succcesfully !");
+            out.println("Student created successfully !");
         } else if (personType.equalsIgnoreCase("teacher")) {
-            System.out.println("Enter the teacher's specialization:");
+            out.println("Enter the teacher's specialization:");
             String specialization = scanner.nextLine();
 
             Teacher teacher = new Teacher(personId, name, age, specialization);
             people.add(teacher);
-            System.out.println("Teacher created succesfully");
+            out.println("Teacher created successfully !");
         } else {
-            System.out.println("Invalid person type.");
+            out.println("Invalid person type.");
         }
+
     }
 
     public static void createBook() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the book's title:");
+        out.println("Enter the book's title:");
         String title = scanner.nextLine();
-        System.out.println("Enter the book's author:");
+        out.println("Enter the book's author:");
         String author = scanner.nextLine();
 
         Book book = new Book(title, author);
         books.add(book);
-        System.out.println("Book created succesfully !");
+        out.println("Book created successfully !");
     }
 
     public static void createRental() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the person's ID:");
+        out.println("Enter the person's ID:");
         int personId = scanner.nextInt();
 
         Person person = findPersonById(personId);
         if (person == null) {
-            System.out.println("Person not found.");
+            out.println("Person not found.");
             return;
         }
 
-        System.out.println("Enter the book's title:");
+        out.println("Enter the book's title:");
         scanner.nextLine(); // Consume the newline character
         String bookTitle = scanner.nextLine();
 
         Book book = findBookByTitle(bookTitle);
         if (book == null) {
-            System.out.println("Book not found.");
+            out.println("Book not found !.");
             return;
         }
 
-        System.out.println("Enter the rental date:");
+        out.println("Enter the rental date:");
         String rentalDate = scanner.nextLine();
 
         Rental rental = new Rental(rentalDate, book, person);
         rentals.add(rental);
         person.addRental(rental);
-        System.out.println("Rental created succesfully !");
+        out.println("Rental created successfully !");
     }
 
     public static void listRentalsForPerson() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the person's ID:");
+        out.println("Enter the person's ID:");
         int personId = scanner.nextInt();
 
         Person person = findPersonById(personId);
         if (person == null) {
-            System.out.println("Person not found.");
+            out.println("Person not found.");
             return;
         }
-
-        System.out.println("Listing rentals for person: " + person.getName());
+        Nameable decoratedPerson = new TrimmerDecorator(new CapitalizedDecorator(person));
+        out.println("Listing rentals for person: " +decoratedPerson.correctName());
         for (Rental rental : person.getRentals()) {
-            System.out.println("Date : "+rental.getDate()+",Book "+rental.getBook().getTitle()+" by "+rental.getBook().getAuthor());
+            out.println("Date : "+rental.getDate()+",Book "+rental.getBook().getTitle()+" by "+rental.getBook().getAuthor());
         }
     }
 
