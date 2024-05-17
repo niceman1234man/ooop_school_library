@@ -17,11 +17,6 @@ public class Person implements Nameable{
         this.rentals = new ArrayList<>();
     }
 
-    public Person(int id,String name, int age, boolean parentPermission) {
-       this(id,name, age);
-        this.parentPermission = parentPermission;
-    }
-
     public int getId() {
         return id;
     }
@@ -36,24 +31,9 @@ public class Person implements Nameable{
         return age;
     }
 
-    public void setName(String name) {
-
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     private boolean isOfAge() {
         return age >= 18;
     }
-
-    public boolean canUseServices() {
-
-        return isOfAge() || parentPermission;
-    }
-
 
     @Override
     public String correctName() {
