@@ -1,7 +1,5 @@
 public class TrimmerDecorator extends Decorator{
-
     public TrimmerDecorator(Nameable nameable) {
-
         super(nameable);
     }
     public String correctName() {
